@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Create the bin directory if it doesn't exist
+mkdir -p ~/.local/bin
+
+# Create the Swift command
+cat > ~/.local/bin/aoc-swift << 'EOF'
+#!/bin/bash
+if [ "$1" = "test" ]; then
+    npm run test "day$2" swift
+elif [ "$1" = "day" ]; then
+    npm run day "day$2" swift
+else
+    echo "❌ First argument must be 'test' or 'day'"
+    exit 1
+fi
+EOF
+
+# Create the Go command
+cat > ~/.local/bin/aoc-go << 'EOF'
+#!/bin/bash
+if [ "$1" = "test" ]; then
+    npm run test "day$2" go
+elif [ "$1" = "day" ]; then
+    npm run day "day$2" go
+else
+    echo "❌ First argument must be 'test' or 'day'"
+    exit 1
+fi
+EOF
+
+# Create the TypeScript command
+cat > ~/.local/bin/aoc-ts << 'EOF'
+#!/bin/bash
+if [ "$1" = "test" ]; then
+    npm run test "day$2" typescript
+elif [ "$1" = "day" ]; then
+    npm run day "day$2" typescript
+else
+    echo "❌ First argument must be 'test' or 'day'"
+    exit 1
+fi
+EOF
+
+# Make the scripts executable
+chmod +x ~/.local/bin/aoc-swift
+chmod +x ~/.local/bin/aoc-go
+chmod +x ~/.local/bin/aoc-ts
+
+# Add the local bin to PATH if it's not already there
+if ! echo $PATH | grep -q ~/.local/bin; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+fi
+
+echo "✅ Commands have been set up! Please restart your terminal or run 'source ~/.zshrc'"
+echo "You can now use:"
+echo "  aoc-swift test <day>"
+echo "  aoc-swift day <day>"
+echo "  aoc-go test <day>"
+echo "  aoc-go day <day>"
+echo "  aoc-ts test <day>"
+echo "  aoc-ts day <day>" 

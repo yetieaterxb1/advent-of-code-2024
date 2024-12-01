@@ -1,0 +1,23 @@
+{
+  "name": "advent-of-code-2024",
+  "version": "1.0.0",
+  "description": "Advent of Code 2024 solutions in Go, TypeScript, and Swift",
+  "scripts": {
+    "fetch": "ts-node scripts/fetch.ts",
+    "day": "ts-node scripts/run.ts",
+    "test": "ts-node scripts/test.ts",
+    "swift:test": "ts-node scripts/test.ts",
+    "swift:day": "ts-node scripts/run.ts",
+    "go:test": "ts-node scripts/test.ts",
+    "go:day": "ts-node scripts/run.ts",
+    "ts:test": "ts-node scripts/test.ts",
+    "ts:day": "ts-node scripts/run.ts"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2",
+    "@types/node": "^20.10.1"
+  }
+}
